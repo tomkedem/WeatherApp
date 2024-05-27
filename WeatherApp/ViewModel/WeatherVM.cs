@@ -1,21 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using WeatherApp.Model;
 
 namespace WeatherApp.ViewModel;
 public class WeatherVM : INotifyPropertyChanged
 {
-    private int Query;
+    private string query;
 
-    public int MyProperty
+    public string Query
     {
-        get { return Query; }
-        set { 
-            Query = value; 
+        get { return query; }
+        set {
+            query = value; 
             OnPropertyChanged("Query");
+        }
+    }
+
+    private CurrentConditions currentConditions;
+
+    public CurrentConditions CurrentConditions
+    {
+        get { return currentConditions; }
+        set { 
+            currentConditions = value;
+            OnPropertyChanged("CurrentConditions");
+        }
+    }    
+
+    private City selectedCity;
+
+    public City SelectedCity
+    {
+        get { return selectedCity; }
+        set
+        {
+            selectedCity = value;
+            OnPropertyChanged("SelectedCity");
         }
     }
 
@@ -24,4 +43,5 @@ public class WeatherVM : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+
 }
