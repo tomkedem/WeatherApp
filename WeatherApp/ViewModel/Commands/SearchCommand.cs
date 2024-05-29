@@ -17,16 +17,15 @@ namespace WeatherApp.ViewModel.Commands
         {
             VM = vm;
         }
-
-        
+               
 
         public bool CanExecute(object? parameter)
         {
-            string query = parameter as string;
-            if (string.IsNullOrEmpty(query))
-            {
-                return false;
-            }
+            //string query = parameter as string;
+            //if (string.IsNullOrEmpty(query))
+            //{
+            //    return false;
+            //}
             return true;
         }
 
@@ -35,6 +34,5 @@ namespace WeatherApp.ViewModel.Commands
             VM.MakeQuery();
         }
     }
-    {
-    }
+    
 }

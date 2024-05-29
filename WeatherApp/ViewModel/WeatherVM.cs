@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using WeatherApp.Model;
+using WeatherApp.ViewModel.Commands;
 using WeatherApp.ViewModel.Helpers;
 
 namespace WeatherApp.ViewModel;
@@ -38,6 +39,7 @@ public class WeatherVM : INotifyPropertyChanged
             OnPropertyChanged("SelectedCity");
         }
     }
+    public SearchCommand SearchCommand { get; set; }
 
     public WeatherVM()
     {
@@ -65,6 +67,8 @@ public class WeatherVM : INotifyPropertyChanged
                 }
             };
         }
+
+        SearchCommand = new SearchCommand(this);
        
     }
 
