@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using WeatherApp.Model;
+using WeatherApp.ViewModel.Helpers;
 
 namespace WeatherApp.ViewModel;
 public class WeatherVM : INotifyPropertyChanged
@@ -65,6 +66,12 @@ public class WeatherVM : INotifyPropertyChanged
             };
         }
        
+    }
+
+    public async void MakeQuery()
+    {
+        var Cities = await AccuWeatherHelper.GetCities(Query);
+        
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
