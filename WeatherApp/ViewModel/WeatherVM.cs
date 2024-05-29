@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using WeatherApp.Model;
 using WeatherApp.ViewModel.Commands;
 using WeatherApp.ViewModel.Helpers;
@@ -16,6 +17,8 @@ public class WeatherVM : INotifyPropertyChanged
             OnPropertyChanged("Query");
         }
     }
+
+    public ObservableCollection<City> Cities { get; set; }
 
     private CurrentConditions currentConditions;
 
@@ -75,6 +78,12 @@ public class WeatherVM : INotifyPropertyChanged
     public async void MakeQuery()
     {
         var Cities = await AccuWeatherHelper.GetCities(Query);
+        Cities.Clear();
+        foreach (var city in Cities)
+        {
+            Cities.Add(city);
+        }
+
         
     }
 
